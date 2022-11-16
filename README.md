@@ -6,12 +6,12 @@ frank.junior@ciandt.com [github.com/franklaercio](https://github.com/franklaerci
 ![banner.png](img/paul.png)
 
 **Content**
-1.Importing libraries and files for GCP
-2.Fifa World Cup Data Analyzing
-3.Historical Results
-4.Ranking Fifa
-5.Modeling Machine Learning for Fifa World Cup Predictions
-6.Qatar World Cup Predictions
+1. Importing libraries and files for GCP
+2. Fifa World Cup Data Analyzing
+3. Historical Results
+4. Ranking Fifa
+5. Modeling Machine Learning for Fifa World Cup Predictions
+6. Qatar World Cup Predictions
 
 ## **Fifa World Cup Data Analyzing**
 
@@ -20,10 +20,10 @@ In this section, we understand our dataset and make some assumptions. Like a doe
 ### **Historical Results**
 
 This section is an important part of building the algorithm, as we will check the previous results of the selections in matches. But we will make the following refinements to the data:
-*Check match dates.
-*Select the most played tournaments, as they are the most disputed.
-*Remove friendlies, as they can negatively influence predictions, due to their competitiveness.
-*Remove matches older than the 21st century, as soccer is very current.
+* Check match dates.
+* Select the most played tournaments, as they are the most disputed.
+* Remove friendlies, as they can negatively influence predictions, due to their competitiveness.
+* Remove matches older than the 21st century, as soccer is very current.
 
 ### **Ranking Fifa**
 
