@@ -1,49 +1,73 @@
-﻿match,date,country1,country2,phase
-1,21/11/2022,Qatar,Ecuador,group matches
-2,21/11/2022,Senegal,Netherlands,group matches
-3,21/11/2022,England,Iran,group matches
-4,21/11/2022,USA,Wales,group matches
-5,22/11/2022,France,Australia,group matches
-6,22/11/2022,Denmark,Tunisia,group matches
-7,22/11/2022,Mexico,Poland,group matches
-8,22/11/2022,Argentina,Saudi Arabia,group matches
-9,23/11/2022,Belgium,Canada,group matches
-10,23/11/2022,Spain,Costa Rica,group matches
-11,23/11/2022,Germany,Japan,group matches
-12,23/11/2022,Morocco,Croatia,group matches
-13,24/11/2022,Switzerland,Cameroon,group matches
-14,24/11/2022,Uruguay,South Korea,group matches
-15,24/11/2022,Portugal,Ghana,group matches
-16,24/11/2022,Brazil,Serbia,group matches
-17,25/11/2022,Wales,Iran,group matches
-18,25/11/2022,Qatar,Senegal,group matches
-19,25/11/2022,Netherlands,Ecuador,group matches
-20,25/11/2022,England,USA,group matches
-21,26/11/2022,Tunisia,Australia,group matches
-22,26/11/2022,Poland,Saudi Arabia,group matches
-23,26/11/2022,France,Denmark,group matches
-24,26/11/2022,Argentina,Mexico,group matches
-25,27/11/2022,Japan,Costa Rica,group matches
-26,27/11/2022,Belgium,Morocco,group matches
-27,27/11/2022,Croatia,Canada,group matches
-28,27/11/2022,Spain,Germany,group matches
-29,28/11/2022,Cameroon,Serbia,group matches
-30,28/11/2022,South Korea,Ghana,group matches
-31,28/11/2022,Brazil,Switzerland,group matches
-32,28/11/2022,Portugal,Uruguay,group matches
-33,29/11/2022,Wales,England,group matches
-34,29/11/2022,Iran,USA,group matches
-35,29/11/2022,Ecuador,Senegal,group matches
-36,29/11/2022,Netherlands,Qatar,group matches
-37,30/11/2022,Australia,Denmark,group matches
-38,30/11/2022,Tunisia,France,group matches
-39,30/11/2022,Poland,Argentina,group matches
-40,30/11/2022,Saudi Arabia,Mexico,group matches
-41,01/12/2022,Croatia,Belgium,group matches
-42,01/12/2022,Canada,Morocco,group matches
-43,01/12/2022,Japan,Spain,group matches
-44,01/12/2022,Costa Rica,Germany,group matches
-45,02/12/2022,Ghana,Uruguay,group matches
-46,02/12/2022,South Korea,Portugal,group matches
-47,02/12/2022,Serbia,Switzerland,group matches
-48,02/12/2022,Cameroon,Brazil,group matches
+match,date,country1,country2,phase
+1,11/06/2026,Mexico,South Africa,group matches
+2,11/06/2026,South Korea,Czech Republic,group matches
+3,12/06/2026,Canada,Bosnia and Herzegovina,group matches
+4,12/06/2026,USA,Paraguay,group matches
+5,13/06/2026,Qatar,Switzerland,group matches
+6,13/06/2026,Brazil,Morocco,group matches
+7,13/06/2026,Haiti,Scotland,group matches
+8,13/06/2026,Australia,Turkey,group matches
+9,14/06/2026,Germany,Curaçao,group matches
+10,14/06/2026,Côte d'Ivoire,Ecuador,group matches
+11,14/06/2026,Netherlands,Japan,group matches
+12,14/06/2026,Sweden,Tunisia,group matches
+13,15/06/2026,Belgium,Egypt,group matches
+14,15/06/2026,Iran,New Zealand,group matches
+15,15/06/2026,Spain,Cabo Verde,group matches
+16,15/06/2026,Saudi Arabia,Uruguay,group matches
+17,16/06/2026,France,Senegal,group matches
+18,16/06/2026,Iraq,Norway,group matches
+19,16/06/2026,Argentina,Algeria,group matches
+20,16/06/2026,Austria,Jordan,group matches
+21,17/06/2026,Portugal,Congo DR,group matches
+22,17/06/2026,Uzbekistan,Colombia,group matches
+23,17/06/2026,England,Croatia,group matches
+24,17/06/2026,Ghana,Panama,group matches
+25,18/06/2026,Czech Republic,South Africa,group matches
+26,18/06/2026,Mexico,South Korea,group matches
+27,18/06/2026,Switzerland,Bosnia and Herzegovina,group matches
+28,18/06/2026,Canada,Qatar,group matches
+29,19/06/2026,Scotland,Morocco,group matches
+30,19/06/2026,Brazil,Haiti,group matches
+31,19/06/2026,USA,Australia,group matches
+32,19/06/2026,Turkey,Paraguay,group matches
+33,20/06/2026,Germany,Côte d'Ivoire,group matches
+34,20/06/2026,Ecuador,Curaçao,group matches
+35,20/06/2026,Netherlands,Sweden,group matches
+36,20/06/2026,Tunisia,Japan,group matches
+37,21/06/2026,Belgium,Iran,group matches
+38,21/06/2026,New Zealand,Egypt,group matches
+39,21/06/2026,Spain,Saudi Arabia,group matches
+40,21/06/2026,Uruguay,Cabo Verde,group matches
+41,22/06/2026,France,Iraq,group matches
+42,22/06/2026,Norway,Senegal,group matches
+43,22/06/2026,Argentina,Austria,group matches
+44,22/06/2026,Jordan,Algeria,group matches
+45,23/06/2026,Portugal,Uzbekistan,group matches
+46,23/06/2026,Colombia,Congo DR,group matches
+47,23/06/2026,England,Ghana,group matches
+48,23/06/2026,Panama,Croatia,group matches
+49,24/06/2026,Mexico,Czech Republic,group matches
+50,24/06/2026,South Africa,South Korea,group matches
+51,24/06/2026,Canada,Switzerland,group matches
+52,24/06/2026,Bosnia and Herzegovina,Qatar,group matches
+53,24/06/2026,Scotland,Brazil,group matches
+54,24/06/2026,Morocco,Haiti,group matches
+55,25/06/2026,USA,Turkey,group matches
+56,25/06/2026,Paraguay,Australia,group matches
+57,25/06/2026,Curaçao,Côte d'Ivoire,group matches
+58,25/06/2026,Ecuador,Germany,group matches
+59,25/06/2026,Japan,Sweden,group matches
+60,25/06/2026,Tunisia,Netherlands,group matches
+61,26/06/2026,Egypt,Iran,group matches
+62,26/06/2026,New Zealand,Belgium,group matches
+63,26/06/2026,Cabo Verde,Saudi Arabia,group matches
+64,26/06/2026,Uruguay,Spain,group matches
+65,26/06/2026,Norway,France,group matches
+66,26/06/2026,Senegal,Iraq,group matches
+67,27/06/2026,Algeria,Austria,group matches
+68,27/06/2026,Jordan,Argentina,group matches
+69,27/06/2026,Colombia,Portugal,group matches
+70,27/06/2026,Congo DR,Uzbekistan,group matches
+71,27/06/2026,Panama,England,group matches
+72,27/06/2026,Croatia,Ghana,group matches
