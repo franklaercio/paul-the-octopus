@@ -1,0 +1,73 @@
+match,date,phase,country1,home_score,away_score,country2,placar,resultado
+1,11/06/2026,group matches,Mexico,0,0,South Africa,0-0,Empate
+2,11/06/2026,group matches,South Korea,1,1,Czech Republic,1-1,Empate
+3,12/06/2026,group matches,Canada,1,1,Bosnia and Herzegovina,1-1,Empate
+4,12/06/2026,group matches,USA,0,0,Paraguay,0-0,Empate
+5,13/06/2026,group matches,Qatar,0,1,Switzerland,0-1,Switzerland
+6,13/06/2026,group matches,Brazil,0,0,Morocco,0-0,Empate
+7,13/06/2026,group matches,Haiti,0,1,Scotland,0-1,Scotland
+8,13/06/2026,group matches,Australia,0,1,Turkey,0-1,Turkey
+9,14/06/2026,group matches,Germany,2,0,Curaçao,2-0,Germany
+10,14/06/2026,group matches,Côte d'Ivoire,0,1,Ecuador,0-1,Ecuador
+11,14/06/2026,group matches,Netherlands,2,0,Japan,2-0,Netherlands
+12,14/06/2026,group matches,Sweden,1,0,Tunisia,1-0,Sweden
+13,15/06/2026,group matches,Belgium,2,0,Egypt,2-0,Belgium
+14,15/06/2026,group matches,Iran,2,0,New Zealand,2-0,Iran
+15,15/06/2026,group matches,Spain,2,0,Cabo Verde,2-0,Spain
+16,15/06/2026,group matches,Saudi Arabia,0,1,Uruguay,0-1,Uruguay
+17,16/06/2026,group matches,France,1,0,Senegal,1-0,France
+18,16/06/2026,group matches,Iraq,0,1,Norway,0-1,Norway
+19,16/06/2026,group matches,Argentina,2,0,Algeria,2-0,Argentina
+20,16/06/2026,group matches,Austria,1,0,Jordan,1-0,Austria
+21,17/06/2026,group matches,Portugal,2,0,Congo DR,2-0,Portugal
+22,17/06/2026,group matches,Uzbekistan,0,2,Colombia,0-2,Colombia
+23,17/06/2026,group matches,England,1,0,Croatia,1-0,England
+24,17/06/2026,group matches,Ghana,1,0,Panama,1-0,Ghana
+25,18/06/2026,group matches,Czech Republic,1,0,South Africa,1-0,Czech Republic
+26,18/06/2026,group matches,Mexico,1,1,South Korea,1-1,Empate
+27,18/06/2026,group matches,Switzerland,1,0,Bosnia and Herzegovina,1-0,Switzerland
+28,18/06/2026,group matches,Canada,0,0,Qatar,0-0,Empate
+29,19/06/2026,group matches,Scotland,0,0,Morocco,0-0,Empate
+30,19/06/2026,group matches,Brazil,3,0,Haiti,3-0,Brazil
+31,19/06/2026,group matches,USA,1,0,Australia,1-0,USA
+32,19/06/2026,group matches,Turkey,1,1,Paraguay,1-1,Empate
+33,20/06/2026,group matches,Germany,2,0,Côte d'Ivoire,2-0,Germany
+34,20/06/2026,group matches,Ecuador,1,0,Curaçao,1-0,Ecuador
+35,20/06/2026,group matches,Netherlands,1,1,Sweden,1-1,Empate
+36,20/06/2026,group matches,Tunisia,0,0,Japan,0-0,Empate
+37,21/06/2026,group matches,Belgium,1,1,Iran,1-1,Empate
+38,21/06/2026,group matches,New Zealand,0,0,Egypt,0-0,Empate
+39,21/06/2026,group matches,Spain,2,0,Saudi Arabia,2-0,Spain
+40,21/06/2026,group matches,Uruguay,1,0,Cabo Verde,1-0,Uruguay
+41,22/06/2026,group matches,France,3,0,Iraq,3-0,France
+42,22/06/2026,group matches,Norway,0,0,Senegal,0-0,Empate
+43,22/06/2026,group matches,Argentina,2,0,Austria,2-0,Argentina
+44,22/06/2026,group matches,Jordan,0,1,Algeria,0-1,Algeria
+45,23/06/2026,group matches,Portugal,3,0,Uzbekistan,3-0,Portugal
+46,23/06/2026,group matches,Colombia,1,0,Congo DR,1-0,Colombia
+47,23/06/2026,group matches,England,1,0,Ghana,1-0,England
+48,23/06/2026,group matches,Panama,0,2,Croatia,0-2,Croatia
+49,24/06/2026,group matches,Mexico,0,1,Czech Republic,0-1,Czech Republic
+50,24/06/2026,group matches,South Africa,1,1,South Korea,1-1,Empate
+51,24/06/2026,group matches,Canada,0,1,Switzerland,0-1,Switzerland
+52,24/06/2026,group matches,Bosnia and Herzegovina,0,0,Qatar,0-0,Empate
+53,24/06/2026,group matches,Scotland,0,1,Brazil,0-1,Brazil
+54,24/06/2026,group matches,Morocco,1,0,Haiti,1-0,Morocco
+55,25/06/2026,group matches,USA,1,1,Turkey,1-1,Empate
+56,25/06/2026,group matches,Paraguay,1,0,Australia,1-0,Paraguay
+57,25/06/2026,group matches,Curaçao,0,1,Côte d'Ivoire,0-1,Côte d'Ivoire
+58,25/06/2026,group matches,Ecuador,1,1,Germany,1-1,Empate
+59,25/06/2026,group matches,Japan,0,1,Sweden,0-1,Sweden
+60,25/06/2026,group matches,Tunisia,0,1,Netherlands,0-1,Netherlands
+61,26/06/2026,group matches,Egypt,1,1,Iran,1-1,Empate
+62,26/06/2026,group matches,New Zealand,0,2,Belgium,0-2,Belgium
+63,26/06/2026,group matches,Cabo Verde,0,0,Saudi Arabia,0-0,Empate
+64,26/06/2026,group matches,Uruguay,0,1,Spain,0-1,Spain
+65,26/06/2026,group matches,Norway,0,1,France,0-1,France
+66,26/06/2026,group matches,Senegal,1,0,Iraq,1-0,Senegal
+67,27/06/2026,group matches,Algeria,1,1,Austria,1-1,Empate
+68,27/06/2026,group matches,Jordan,0,2,Argentina,0-2,Argentina
+69,27/06/2026,group matches,Colombia,0,1,Portugal,0-1,Portugal
+70,27/06/2026,group matches,Congo DR,1,0,Uzbekistan,1-0,Congo DR
+71,27/06/2026,group matches,Panama,0,3,England,0-3,England
+72,27/06/2026,group matches,Croatia,1,0,Ghana,1-0,Croatia

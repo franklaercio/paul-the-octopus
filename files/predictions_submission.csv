@@ -1,49 +1,73 @@
-home_score,away_score,home,away
-1,0,Qatar,Ecuador
-0,1,Senegal,Netherlands
-0,1,England,Iran
-1,0,USA,Wales
-2,0,France,Australia
-2,0,Denmark,Tunisia
-2,0,Mexico,Poland
-2,0,Argentina,Saudi Arabia
-2,0,Belgium,Canada
-2,0,Spain,Costa Rica
-2,0,Germany,Japan
-0,2,Morocco,Croatia
-2,0,Switzerland,Cameroon
-0,2,Uruguay,South Korea
-0,1,Portugal,Ghana
-2,0,Brazil,Serbia
-0,1,Wales,Iran
-0,2,Qatar,Senegal
-0,2,Netherlands,Ecuador
-0,0,England,USA
-1,0,Tunisia,Australia
-2,0,Poland,Saudi Arabia
-0,0,France,Denmark
-0,0,Argentina,Mexico
-0,0,Japan,Costa Rica
-2,0,Belgium,Morocco
-2,0,Croatia,Canada
-2,0,Spain,Germany
-0,2,Cameroon,Serbia
-0,0,South Korea,Ghana
-0,1,Brazil,Switzerland
-2,0,Portugal,Uruguay
-0,1,Wales,England
-0,1,Iran,USA
-0,0,Ecuador,Senegal
-2,0,Netherlands,Qatar
-0,2,Australia,Denmark
-0,2,Tunisia,France
-0,1,Poland,Argentina
-0,2,Saudi Arabia,Mexico
-0,2,Croatia,Belgium
-2,0,Canada,Morocco
-2,0,Japan,Spain
-0,2,Costa Rica,Germany
-0,2,Ghana,Uruguay
-0,2,South Korea,Portugal
-0,0,Serbia,Switzerland
-0,2,Cameroon,Brazil
+home,home_score,away_score,away
+Algeria,1,1,Austria
+Argentina,2,0,Algeria
+Argentina,2,0,Austria
+Australia,0,1,Turkey
+Austria,1,0,Jordan
+Belgium,2,0,Egypt
+Belgium,1,1,Iran
+Bosnia and Herzegovina,0,0,Qatar
+Brazil,3,0,Haiti
+Brazil,0,0,Morocco
+Cabo Verde,0,0,Saudi Arabia
+Canada,1,1,Bosnia and Herzegovina
+Canada,0,0,Qatar
+Canada,0,1,Switzerland
+Colombia,1,0,Congo DR
+Colombia,0,1,Portugal
+Congo DR,1,0,Uzbekistan
+Croatia,1,0,Ghana
+Curaçao,0,1,Côte d'Ivoire
+Czech Republic,1,0,South Africa
+Côte d'Ivoire,0,1,Ecuador
+Ecuador,1,0,Curaçao
+Ecuador,1,1,Germany
+Egypt,1,1,Iran
+England,1,0,Croatia
+England,1,0,Ghana
+France,3,0,Iraq
+France,1,0,Senegal
+Germany,2,0,Curaçao
+Germany,2,0,Côte d'Ivoire
+Ghana,1,0,Panama
+Haiti,0,1,Scotland
+Iran,2,0,New Zealand
+Iraq,0,1,Norway
+Japan,0,1,Sweden
+Jordan,0,1,Algeria
+Jordan,0,2,Argentina
+South Korea,1,1,Czech Republic
+Mexico,0,1,Czech Republic
+Mexico,1,1,South Korea
+Mexico,0,0,South Africa
+Morocco,1,0,Haiti
+Netherlands,2,0,Japan
+Netherlands,1,1,Sweden
+New Zealand,0,2,Belgium
+New Zealand,0,0,Egypt
+Norway,0,1,France
+Norway,0,0,Senegal
+Panama,0,2,Croatia
+Panama,0,3,England
+Paraguay,1,0,Australia
+Portugal,2,0,Congo DR
+Portugal,3,0,Uzbekistan
+Qatar,0,1,Switzerland
+Saudi Arabia,0,1,Uruguay
+Scotland,0,1,Brazil
+Scotland,0,0,Morocco
+Senegal,1,0,Iraq
+South Africa,1,1,South Korea
+Spain,2,0,Cabo Verde
+Spain,2,0,Saudi Arabia
+Sweden,1,0,Tunisia
+Switzerland,1,0,Bosnia and Herzegovina
+Tunisia,0,0,Japan
+Tunisia,0,1,Netherlands
+Turkey,1,1,Paraguay
+USA,1,0,Australia
+USA,0,0,Paraguay
+USA,1,1,Turkey
+Uruguay,1,0,Cabo Verde
+Uruguay,0,1,Spain
+Uzbekistan,0,2,Colombia

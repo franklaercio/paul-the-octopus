@@ -83,4 +83,24 @@ Validação das predições geradas pelo modelo (`files/predictions_submission.c
 - Muitos erros (0 pts) vêm de **zebras** da Copa de 2022 (ex.: Arábia Saudita 2×1 Argentina, Japão sobre Alemanha e Espanha, Marrocos sobre Bélgica), que um modelo baseado só em ranking não captura.
 - A acurácia de treino reportada (~94%) **não se traduz** nesta validação fora da amostra — sinal claro de superestimação da métrica de treino.
 
+## Atualização P1 — avaliação honesta (números reais medidos)
+
+A infraestrutura de avaliação honesta do P1 (split temporal + RPS/log-loss/Brier + baselines) foi implementada no notebook e mede o **classificador** (não a heurística de placar). Números reais (`random_state=42`, dados em `files/`), no hold-out das **57 partidas da Copa 2022** no dataset modelado (grupos + mata-mata):
+
+| Métrica | Valor real |
+|---|---|
+| Acurácia binária in-sample (ilusão do notebook) | **93,27%** |
+| Acurácia binária honesta (RandomForest, hold-out 2022) | **57,89%** |
+| Acurácia binária (split temporal 80/20 genérico) | 67,07% |
+
+| Modelo (1X2, hold-out 2022) | RPS ↓ | log-loss ↓ | Brier ↓ | acerto 1X2 |
+|---|---|---|---|---|
+| Modelo atual (RF binário, p_draw=0) | 0,3388 | 9,2124 | 0,9233 | 0,421 |
+| B0 — frequência-base do treino | 0,2334 | 1,0777 | 0,6530 | 0,439 |
+| B1 — favorito do ranking (suavizado) | 0,2019 | 1,0053 | 0,5982 | 0,579 |
+
+O 94,24% confirmou-se ilusão de avaliação (treino = teste). O modelo binário perde em RPS até para o baseline trivial de frequência-base, porque nunca prevê empate (p_draw = 0) — motivação direta para o P2. Detalhes em [PLANO-MELHORIAS.md](PLANO-MELHORIAS.md#contexto-do-diagnóstico).
+
+> A tabela "Detalhe por partida" acima refere-se à **heurística de placar** (fase de grupos, 48 jogos); as métricas do P1 avaliam o **classificador de probabilidades** sobre o hold-out completo da Copa 2022.
+
 > Gerado a partir de `files/predictions_submission.csv` vs. resultados reais em `files/historical-results.csv` (FIFA World Cup, 2022).
