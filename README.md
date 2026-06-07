@@ -8,8 +8,9 @@ FIFA 2026 a partir de partidas internacionais, ranking FIFA, forma recente e mod
 ## Estrutura
 
 ```text
-files/                    CSVs de entrada e previsões geradas
-src/paultheoctopus.ipynb  Pipeline principal de análise, treino e inferência
+data/raw/                 CSVs de entrada
+data/results/             Previsões geradas
+notebooks/paultheoctopus.ipynb  Pipeline principal de análise, treino e inferência
 scripts/                  Validação dos dados e execução automatizada
 tests/                    Testes dos contratos de entrada
 docs/                     Decisões, avaliações e documentação técnica
@@ -66,13 +67,13 @@ python -m scripts.run_pipeline
 
 O comando gera:
 
-- `files/predictions_submission.csv`: previsões do modelo;
+- `data/results/predictions_submission.csv`: previsões do modelo;
 - `artifacts/paultheoctopus.executed.ipynb`: notebook executado com os resultados.
 
 Para trabalhar interativamente:
 
 ```bash
-jupyter lab src/paultheoctopus.ipynb
+jupyter lab notebooks/paultheoctopus.ipynb
 ```
 
 ## Qualidade
@@ -87,7 +88,7 @@ testes e roda o notebook completo em pushes e pull requests.
 
 ## Dados
 
-Os CSVs ficam em `files/`. O pipeline não depende de GCP ou banco de dados. O calendário de
+As entradas ficam em `data/raw/` e os resultados em `data/results/`. O pipeline não depende de GCP ou banco de dados. O calendário de
 2026 usa data e horário de Brasília (`GMT-3`) nas colunas `date`, `time_brasilia` e `timezone`.
 
 Consulte [docs/PIPELINE.md](docs/PIPELINE.md) para contratos, etapas e solução de problemas.

@@ -25,7 +25,7 @@ Notebook Jupyter
    +--> inferência da Copa 2026
    |
    v
-CSV de previsões + notebook executado
+CSV em `data/results/` + notebook executado
 ```
 
 ## Decisões

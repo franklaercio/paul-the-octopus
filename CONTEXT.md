@@ -3,7 +3,7 @@
 ## Visão geral
 
 Projeto de ciência de dados e machine learning para prever partidas da Copa do Mundo FIFA 2026.
-O pipeline completo vive em `src/paultheoctopus.ipynb` e cobre preparação dos dados, EDA,
+O pipeline completo vive em `notebooks/paultheoctopus.ipynb` e cobre preparação dos dados, EDA,
 engenharia de features, validação temporal, treino, calibração, placares e inferência.
 
 ## Ambiente
@@ -19,8 +19,9 @@ Principais bibliotecas: pandas, NumPy, SciPy, Matplotlib, Seaborn e scikit-learn
 ## Estrutura
 
 ```text
-files/                    Dados e previsões em CSV
-src/paultheoctopus.ipynb  Implementação principal do pipeline
+data/raw/                 Dados de entrada em CSV
+data/results/             Previsões geradas
+notebooks/paultheoctopus.ipynb  Implementação principal do pipeline
 scripts/validate_data.py  Validação dos contratos de entrada
 scripts/run_pipeline.py   Execução automatizada e validação da saída
 tests/                    Testes dos contratos de dados
@@ -64,7 +65,7 @@ python -m scripts.run_pipeline
 ```
 
 O último comando gera `artifacts/paultheoctopus.executed.ipynb` e valida se
-`files/predictions_submission.csv` contém o mesmo número de partidas do calendário.
+`data/results/predictions_submission.csv` contém o mesmo número de partidas do calendário.
 
 ## Convenções
 

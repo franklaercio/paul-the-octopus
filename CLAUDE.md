@@ -6,21 +6,22 @@ Guia de contexto para o Claude trabalhar neste repositório. Para detalhes, veja
 ## Projeto
 
 **Paul the Octopus** é um pipeline de ciência de dados e ML para prever partidas da Copa do
-Mundo FIFA 2026. A implementação científica principal vive em `src/paultheoctopus.ipynb`.
+Mundo FIFA 2026. A implementação científica principal vive em `notebooks/paultheoctopus.ipynb`.
 
 ## Ambiente
 
 - Python 3.10+
 - Dependências: `requirements.txt`
 - Desenvolvimento e CI: `requirements-dev.txt`
-- Dados locais em `files/`; não há dependência obrigatória de GCP
+- Entradas em `data/raw/` e resultados em `data/results/`; não há dependência obrigatória de GCP
 - Persistência em CSV; não há banco de dados
 
 ## Estrutura
 
 ```text
-files/                    Entradas e previsões em CSV
-src/paultheoctopus.ipynb  Pipeline principal
+data/raw/                 Entradas em CSV
+data/results/             Previsões geradas
+notebooks/paultheoctopus.ipynb  Pipeline principal
 scripts/                  Validação e execução automatizada
 tests/                    Testes dos contratos de dados
 docs/                     Design, avaliações e planos

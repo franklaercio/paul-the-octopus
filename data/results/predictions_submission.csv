@@ -1,0 +1,73 @@
+home,home_score,away_score,away
+Algeria,1,1,Austria
+Argentina,2,0,Algeria
+Argentina,2,0,Austria
+Australia,0,1,Turkey
+Austria,1,0,Jordan
+Belgium,2,0,Egypt
+Belgium,1,1,Iran
+Bosnia and Herzegovina,0,0,Qatar
+Brazil,3,0,Haiti
+Brazil,0,0,Morocco
+Cabo Verde,0,0,Saudi Arabia
+Canada,1,1,Bosnia and Herzegovina
+Canada,0,0,Qatar
+Canada,0,1,Switzerland
+Colombia,1,0,Congo DR
+Colombia,0,1,Portugal
+Congo DR,1,0,Uzbekistan
+Croatia,1,0,Ghana
+Curaçao,0,1,Côte d'Ivoire
+Czech Republic,1,0,South Africa
+Côte d'Ivoire,0,1,Ecuador
+Ecuador,1,0,Curaçao
+Ecuador,1,1,Germany
+Egypt,1,1,Iran
+England,1,0,Croatia
+England,1,0,Ghana
+France,3,0,Iraq
+France,1,0,Senegal
+Germany,2,0,Curaçao
+Germany,2,0,Côte d'Ivoire
+Ghana,1,0,Panama
+Haiti,0,1,Scotland
+Iran,2,0,New Zealand
+Iraq,0,1,Norway
+Japan,0,1,Sweden
+Jordan,0,1,Algeria
+Jordan,0,2,Argentina
+South Korea,1,1,Czech Republic
+Mexico,0,1,Czech Republic
+Mexico,1,1,South Korea
+Mexico,0,0,South Africa
+Morocco,1,0,Haiti
+Netherlands,2,0,Japan
+Netherlands,1,1,Sweden
+New Zealand,0,2,Belgium
+New Zealand,0,0,Egypt
+Norway,0,1,France
+Norway,0,0,Senegal
+Panama,0,2,Croatia
+Panama,0,3,England
+Paraguay,1,0,Australia
+Portugal,2,0,Congo DR
+Portugal,3,0,Uzbekistan
+Qatar,0,1,Switzerland
+Saudi Arabia,0,1,Uruguay
+Scotland,0,1,Brazil
+Scotland,0,0,Morocco
+Senegal,1,0,Iraq
+South Africa,1,1,South Korea
+Spain,2,0,Cabo Verde
+Spain,2,0,Saudi Arabia
+Sweden,1,0,Tunisia
+Switzerland,1,0,Bosnia and Herzegovina
+Tunisia,0,0,Japan
+Tunisia,0,1,Netherlands
+Turkey,1,1,Paraguay
+USA,1,0,Australia
+USA,0,0,Paraguay
+USA,1,1,Turkey
+Uruguay,1,0,Cabo Verde
+Uruguay,0,1,Spain
+Uzbekistan,0,2,Colombia

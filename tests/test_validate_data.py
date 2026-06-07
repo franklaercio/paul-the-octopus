@@ -2,11 +2,16 @@ from pathlib import Path
 
 import pytest
 
-from scripts.validate_data import FILES_DIR, ValidationError, validate_repository, validate_schedule
+from scripts.validate_data import (
+    RAW_DATA_DIR,
+    ValidationError,
+    validate_repository,
+    validate_schedule,
+)
 
 
 def test_repository_inputs_are_valid() -> None:
-    counts = validate_repository(FILES_DIR)
+    counts = validate_repository(RAW_DATA_DIR)
 
     assert counts["historical-results.csv"] > 0
     assert counts["ranking.csv"] > 0
@@ -23,4 +28,3 @@ def test_schedule_rejects_invalid_timezone(tmp_path: Path) -> None:
 
     with pytest.raises(ValidationError, match="GMT-3"):
         validate_schedule(schedule)
-

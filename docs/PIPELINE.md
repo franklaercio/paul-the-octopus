@@ -2,20 +2,20 @@
 
 ## Visão geral
 
-O notebook `src/paultheoctopus.ipynb` continua sendo a implementação principal. Os scripts não
+O notebook `notebooks/paultheoctopus.ipynb` continua sendo a implementação principal. Os scripts não
 duplicam a lógica do modelo: eles validam os contratos dos dados, executam o notebook e verificam
 se a saída esperada foi produzida.
 
 ```text
-files/*.csv
+data/raw/*.csv
     |
     v
 scripts.validate_data
     |
     v
-src/paultheoctopus.ipynb
+notebooks/paultheoctopus.ipynb
     |
-    +--> files/predictions_submission.csv
+    +--> data/results/predictions_submission.csv
     +--> artifacts/paultheoctopus.executed.ipynb
 ```
 
@@ -81,8 +81,7 @@ e manualmente. O notebook executado é publicado como artefato da execução do 
 
 ## Atualização de dados
 
-1. Atualize os CSVs em `files/` sem alterar seus contratos.
+1. Atualize os CSVs em `data/raw/` sem alterar seus contratos.
 2. Execute `python -m scripts.validate_data`.
 3. Execute `python -m scripts.run_pipeline`.
-4. Revise as métricas do notebook e `files/predictions_submission.csv` antes do commit.
-
+4. Revise as métricas do notebook e `data/results/predictions_submission.csv` antes do commit.

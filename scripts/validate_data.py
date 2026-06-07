@@ -7,7 +7,7 @@ from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-FILES_DIR = ROOT / "files"
+RAW_DATA_DIR = ROOT / "data" / "raw"
 
 REQUIRED_COLUMNS = {
     "historical-results.csv": {
@@ -99,7 +99,7 @@ def validate_schedule(path: Path) -> int:
     return len(rows)
 
 
-def validate_repository(files_dir: Path = FILES_DIR) -> dict[str, int]:
+def validate_repository(files_dir: Path = RAW_DATA_DIR) -> dict[str, int]:
     counts = {
         "historical-results.csv": len(read_csv(files_dir / "historical-results.csv")),
         "ranking.csv": len(read_csv(files_dir / "ranking.csv")),
@@ -110,7 +110,7 @@ def validate_repository(files_dir: Path = FILES_DIR) -> dict[str, int]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Valida os CSVs de entrada do pipeline.")
-    parser.add_argument("--files-dir", type=Path, default=FILES_DIR)
+    parser.add_argument("--files-dir", type=Path, default=RAW_DATA_DIR)
     args = parser.parse_args()
 
     try:

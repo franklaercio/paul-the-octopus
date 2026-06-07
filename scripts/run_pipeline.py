@@ -9,9 +9,9 @@ from nbclient import NotebookClient
 
 from scripts.validate_data import ROOT, ValidationError, validate_repository
 
-NOTEBOOK = ROOT / "src" / "paultheoctopus.ipynb"
+NOTEBOOK = ROOT / "notebooks" / "paultheoctopus.ipynb"
 ARTIFACTS_DIR = ROOT / "artifacts"
-PREDICTIONS = ROOT / "files" / "predictions_submission.csv"
+PREDICTIONS = ROOT / "data" / "results" / "predictions_submission.csv"
 
 
 def validate_predictions(path: Path, expected_rows: int) -> None:
@@ -75,4 +75,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
