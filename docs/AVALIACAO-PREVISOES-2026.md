@@ -29,7 +29,7 @@ Validação de **plausibilidade** das 72 previsões em `files/predictions_submis
 
 O notebook escolhe o placar pelo **argmax** da matriz (o placar isolado mais provável). Para Poisson com média ~1 gol por time, a **moda** fica em 0/1 gol mesmo com a média em ~1,05 por time — então o placar reportado colapsa para 1-0 / 0-0 / 1-1. Isso explica os dois desvios visíveis (poucos gols **e** empates a mais), **mas a média de gols do modelo está em ordem certa**. Reportar um único placar exige escolher um ponto da distribuição, e a moda é o que maximiza o acerto exato.
 
-> **Ponto crítico, comprovado empiricamente (ver §4 P7.1):** sob o critério de pontuação da submissão (10 placar exato / 5 resultado / 0 erro), o **argmax é quase-ótimo** — rende **195 pts no hold-out**, melhor que a alternativa "placar de pontos esperados" (180 pts). Ou seja: os placares baixos da submissão **não são um bug a corrigir para pontuar** — são a aposta que maximiza pontos dado o modelo atual. O verdadeiro espaço de melhora não está na *seleção* do placar (P7.1, rejeitado), e sim na *calibração da média de gols* do DC (P7.2) e no desempate de grupos (P7.4).
+> **Ponto crítico, comprovado empiricamente (ver §4 P7.1):** sob o critério de pontuação da submissão (10 placar exato / 5 resultado / 0 erro), o **argmax é quase-ótimo** — rende **195 pts no hold-out**, melhor que a alternativa "placar de pontos esperados" (180 pts). Ou seja: os placares baixos da submissão **não são um bug a corrigir para pontuar** — são a aposta que maximiza pontos dado o modelo atual. O verdadeiro espaço de melhora não está na *seleção* do placar (P7.1, rejeitado), e sim na *calibração da média de gols* do DC (P7.2) e no desempate de grupos (P7.5).
 
 ---
 
@@ -127,17 +127,22 @@ Etapa **P7 — Geração de placar orientada à pontuação**, alinhada à metod
 - **O quê:** comparar a **taxa de empate dos placares** (29,2% na Copa 2026) com a massa de empate que o 1X2 atribui (DC ≈ 27,7%) e com os empates reais (24,6% no hold-out). O descolamento é, em parte, o mesmo efeito da moda baixa — deve **diminuir** com o P7.2 (mais gols ⇒ menos 0-0/1-1 modais). Medir antes/depois do P7.2.
 - **Validar:** taxa de empate dos placares ≈ massa de empate do 1X2.
 
-### P7.4 — Desempate de grupo principiado *(médio esforço, robustez)*
+### P7.4 — Margem flexível para empate *(implementado e adotado)*
+- **Onde:** `choose_outcome_with_draw_margin` / `_scorelines_draw_margin` (`P7.4`).
+- **O quê:** o condicionamento rígido ao 1X2 quase nunca deixava o placar terminar empatado, mesmo quando `p_draw` estava competitivo. A nova regra permite empate quando `p_draw >= max(p_home, p_away) - DRAW_MARGIN_PROD`.
+- **Validado:** `DRAW_MARGIN_PROD=0.08` elevou o hold-out de **200 → 220 pts**, com **8 → 9 placares exatos**, **32 → 35 resultados** e empates de **1,8% → 10,5%** no hold-out.
+
+### P7.5 — Desempate de grupo principiado *(médio esforço, robustez)*
 - **Onde:** geração de `PREVISAO-GRUPOS-2026.md` (script de tabela) — não altera o modelo.
 - **O quê:** substituir o último critério (**alfabético**) por **probabilidade de avanço via simulação Monte Carlo**: amostrar N placares da matriz Dixon-Coles de cada jogo, montar a tabela em cada simulação e reportar **P(1º), P(2º), P(avançar)** por seleção. Resolve os blocos empatados de forma esportiva e dá incerteza honesta.
 - **Validar:** nenhum grupo decidido por ordem alfabética; ranking dos "melhores terceiros" por probabilidade, não por desempate frágil.
 
-### P7.5 — Reabrir forma recente como feature *(médio esforço, trabalho futuro)*
+### P7.6 — Reabrir forma recente como feature *(testado/rejeitado para produção)*
 - **Onde:** `build_football_features` (`P4.2`) + seleção (`P4.3`/`P4.4`).
-- **O quê:** o P4 foi rejeitado no hold-out de **57 jogos** (amostra pequena). Antes da submissão final, re-testar **só `form_diff` + `elo_diff`** (as de maior sinal) com validação em janela maior (ex.: 2019–2021 **e** 2022 como validação estendida, reservando outro hold-out), mirando casos como **Japan < Tunisia**. Adotar **apenas** se melhorar o RPS fora da amostra — manter o rigor que rejeitou o P4.
+- **O quê:** o P4 foi reaberto com features Last10 de ataque/defesa. A validação melhorou, mas o hold-out piorou, então a feature não entrou no classificador final. No placar, o ajuste de lambdas com Last10 também foi rejeitado: o melhor ponto de validação foi `k=0`.
 - **Validar:** regra de ouro inalterada (só adota se RPS melhora no hold-out).
 
-### P7.6 — Higiene da saída *(baixo esforço)*
+### P7.7 — Higiene da saída *(baixo esforço)*
 - O arquivo `predictions_submission.csv` duplicado na **raiz do repositório** (além de `files/`) deve ser removido/consolidado — a `cell-45` grava em `files/` (ver P6). Garantir fonte única.
 
 ### Resumo de prioridades P7
@@ -145,22 +150,128 @@ Etapa **P7 — Geração de placar orientada à pontuação**, alinhada à metod
 | Pri | Ajuste | Status | Esforço | Impacto | Onde |
 |---|---|---|---|---|---|
 | **P7.1** | Placar = max pontos esperados (não argmax) | ❌ **testado e rejeitado** (195→180 pts no hold-out) | Baixo | — | `P3.2`/`P3.3` |
-| **P7.2** | Calibrar a média de gols do DC (2,10→~2,6) | proposto (**lever principal**) | Médio | **Alto** | `P3.1`/`P3.2` |
-| **P7.3** | Auditar inflação de empate | proposto | Baixo | Médio | `P3.3` |
-| **P7.4** | Desempate de grupo por Monte Carlo | proposto | Médio | Médio (robustez) | script de grupos |
-| **P7.5** | Reabrir forma recente (Japan < Tunisia) | proposto | Médio | Médio | `P4.2`–`P4.4` |
-| **P7.6** | Remover CSV duplicado na raiz | proposto | Baixo | Higiene | repo / `cell-45` |
+| **P7.2** | Calibrar a média de gols do DC (2,10→~2,6) | ✅ **adotado** (`goal_scale=1.35`) | Médio | **Alto** | `P3.1`/`P3.2` |
+| **P7.3** | Last10 modulando lambdas do placar | ❌ **testado e rejeitado** (`k=0`) | Médio | — | `P3.2`/`P7.3` |
+| **P7.4** | Margem flexível para empate | ✅ **adotado** (`DRAW_MARGIN_PROD=0.08`; 200→220 pts) | Baixo | Alto | `P3.3`/`P7.4` |
+| **P7.5** | Desempate de grupo por Monte Carlo | proposto | Médio | Médio (robustez) | script de grupos |
+| **P7.6** | Reabrir forma recente no classificador | ❌ **testado e rejeitado** no hold-out | Médio | — | `P4.2`–`P4.4` |
+| **P7.7** | Remover CSV duplicado na raiz | proposto | Baixo | Higiene | repo / `cell-45` |
 
 ---
 
-## 5. Veredito
+## 5. Experimento Last10 — ataque/defesa recente
+
+Implementado no notebook (`P4.2`-`P4.4`) conforme o plano em
+[`PLANO-FEATURES-ATAQUE-DEFESA-LAST10.md`](PLANO-FEATURES-ATAQUE-DEFESA-LAST10.md).
+
+**O que foi adicionado:**
+
+- `gf_last10_home` / `gf_last10_away`
+- `ga_last10_home` / `ga_last10_away`
+- `attack_diff_last10`
+- `defense_diff_last10`
+- `home_pressure_last10`
+- `away_pressure_last10`
+- `pressure_diff_last10`
+- versoes ajustadas por adversario/competicao:
+  - `attack_diff_last10_adj`
+  - `defense_diff_last10_adj`
+  - `pressure_diff_last10_adj`
+
+Todas as features usam apenas jogos anteriores a partida atual (`shift(1)` +
+janela movel de 10 jogos), considerando mandante e visitante em uma visao longa
+por selecao. As versoes ajustadas ponderam gols marcados/sofridos pela forca do
+adversario via ranking FIFA (`rank_ref / rank_opp`, com clipping) e dao peso um
+pouco maior a Copa do Mundo. O rolling tambem ignora linhas futuras da Copa 2026
+como atualizacao historica, evitando que placares placeholder contaminem outras
+partidas futuras.
+
+O teste anti-vazamento do P4 foi ampliado para incluir as features last10 e
+passou: alterar artificialmente o placar da propria partida para `9-0` nao muda
+as features dessa partida.
+
+**Resultado medido:**
+
+| Etapa | Resultado |
+|---|---:|
+| Melhor last10 isolada na validacao | `attack_diff_last10_adj` |
+| RPS validacao P2 base | 0,1627 |
+| RPS validacao P4 com last10 ajustado selecionado | 0,1535 |
+| Last10 selecionada pelo greedy | `attack_diff_last10_adj` |
+| RPS hold-out P2 | 0,2072 |
+| RPS hold-out P4 + last10 ajustado | 0,2172 |
+
+**Veredito:** o ajuste por adversario/competicao aumentou o sinal na validacao,
+mas piorou a generalizacao no hold-out Copa 2022. Pela regra de ouro do projeto,
+o P4 com last10 ajustado foi **rejeitado** e o modelo de producao segue sendo
+**P2 + Isotonic (calibrado) + Dixon-Coles**.
+
+**Teste adicional no modelo de gols (P7.3):** tambem testamos usar
+`home_pressure_last10_adj` / `away_pressure_last10_adj` como modulador suave dos
+lambdas do Dixon-Coles:
+
+```text
+lambda_home *= clip(exp(k * home_pressure_last10_adj), lo, hi)
+lambda_away *= clip(exp(k * away_pressure_last10_adj), lo, hi)
+```
+
+Grid testado na validacao:
+
+```text
+k in {0.00, 0.03, 0.05, 0.08, 0.10}
+clip in {0.90-1.10, 0.85-1.15, 0.80-1.20}
+```
+
+Resultado: o melhor ponto foi `k=0.00`, isto e, **sem ajuste last10 nos
+lambdas**. Qualquer `k > 0` reduziu a pontuacao 10/5/0 na validacao. No
+hold-out, o candidato `k=0` empata com a base por ser a propria base:
+
+| Metodo | Validacao pontos | Validacao exatos | Hold-out pontos | Hold-out exatos |
+|---|---:|---:|---:|---:|
+| Base sem lambda last10 | 6490 | 265 | 200 | 8 |
+| Melhor grid (`k=0`) | 6490 | 265 | 200 | 8 |
+| Melhor `k > 0` | 6460 | 259 | - | - |
+
+**Veredito P7.3:** rejeitado. A feature last10 ajustada parece carregar sinal
+local, mas quando aplicada aos gols esperados ela desloca massa de placares de
+um jeito que piora acerto exato na validacao.
+
+**Condicionamento flexivel ao empate (P7.4):** como o condicionamento rigido ao
+`argmax` do ensemble deixava poucos empates, testamos permitir empate quando a
+probabilidade de empate esta perto do melhor resultado:
+
+```text
+se p_draw >= max(p_home, p_away) - margin -> placar de empate
+senao -> placar condicionado ao argmax 1X2
+```
+
+Grid testado na validacao:
+
+```text
+margin in {0.00, 0.03, 0.05, 0.08, 0.10, 0.12, 0.15}
+```
+
+Resultado:
+
+| Metodo | Validacao pontos | Validacao exatos | Hold-out pontos | Hold-out exatos | Hold-out resultado |
+|---|---:|---:|---:|---:|---:|
+| Base (`margin=0.00`) | 6490 | 265 | 200 | 8 | 32 |
+| Melhor grid (`margin=0.08`) | 6535 | 268 | 220 | 9 | 35 |
+
+**Veredito P7.4:** adotado. A margem `DRAW_MARGIN_PROD=0.08` melhora validacao
+e hold-out, recupera empates sem reabrir as zebras artefatuais e passa na regra
+de ouro do projeto.
+
+---
+
+## 6. Veredito
 
 - **1X2 (vencedor/empate): coerente.** A ordenação dos grupos respeita a força das seleções; favoritos (Spain, France, Argentina, Portugal, England, Brazil) e minnows (Curaçao, Panama, Uzbekistan, Iraq, Jordan, Haiti) saem nos lugares esperados. Nada *implausível* no pódio dos grupos.
-- **Placar (gols): baixo, mas pela média do DC — não pela seleção do placar.** O placar reportado dá 1,32 gol/jogo porque é a **moda**, enquanto a média do modelo é 2,10 (vs. 2,60 reais). O **P7.1** (placar por pontos esperados) foi **implementado, medido e rejeitado**: sob o critério real 10/5/0 o argmax atual rende **195 pts** vs. 180 do P7.1 no hold-out. O lever certo é **P7.2** (calibrar a média de gols do DC), que ataca placar baixo e empate inflado juntos.
-- **Empates inflados (29,2%)** e **blocos de grupo no alfabético**: parte é a média de gols baixa (P7.2), parte é o desempate frágil (P7.4).
-- **Único ponto de atenção de mérito:** Japan abaixo de Tunisia — falta de forma recente (P7.5).
+- **Placar (gols): melhorou após P7.2 + P7.4.** A produção atual usa `goal_scale=1.35` no Dixon-Coles e condiciona o placar ao 1X2 do ensemble com margem flexivel de empate `DRAW_MARGIN_PROD=0.08`. O arquivo atual fica em **2,17 gols/jogo**, **12 placares únicos**, **13/72 empates** e **3 jogos 0-0**. O P7.1 por pontos esperados segue rejeitado; a melhoria adotada foi calibrar a média de gols, travar coerência com o 1X2 e permitir empate quando competitivo.
+- **Empates sairam do extremo baixo.** Antes da P7.4 eram 5/72; agora sao 13/72. Ainda abaixo da faixa historica de Copas (~22-25%), mas muito menos artificial e validado por hold-out.
+- **Forma recente last10 foi testada e rejeitada para produção.** `attack_diff_last10_adj` entrou no greedy por validação, mas o P4 + last10 ajustado piorou no hold-out; logo fica documentado como experimento, não como modelo de produção.
 
-> Os números de qualidade probabilística (RPS 0,2013 no hold-out 2022) permanecem válidos e **a produção segue inalterada** (argmax + Ensemble P2-iso + DC): o P7.1 foi rejeitado pela própria regra de ouro do projeto, sem regredir a submissão. O notebook ainda roda de ponta a ponta (sanity check 2022 = **PASS**).
+> Os números de qualidade probabilística (RPS 0,2013 no hold-out 2022) permanecem válidos. A produção segue como **Ensemble P2-iso + DC cru para 1X2**, com placar vindo do **Dixon-Coles escalado (`goal_scale=1.35`)**, `lambda_last10_k=0.00` e `DRAW_MARGIN_PROD=0.08`. O notebook roda de ponta a ponta e os CSVs de `files/` estão alinhados ao calendário.
 
 ---
 
