@@ -1,35 +1,97 @@
-# Paul The Octopus Machine Learning
+# Paul the Octopus
 
-Desing by Frank Laércio, Software Developer at CI&T.<br>
-frank.junior@ciandt.com [github.com/franklaercio](https://github.com/franklaercio)
+Pipeline de ciência de dados e machine learning para prever os resultados da Copa do Mundo
+FIFA 2026 a partir de partidas internacionais, ranking FIFA, forma recente e modelos 1X2/placar.
 
-![banner.png](img/paul.png)
+![Paul the Octopus](img/paul.png)
 
-**Content**
-1. Importing libraries and files for GCP
-2. Fifa World Cup Data Analyzing
-3. Historical Results
-4. Ranking Fifa
-5. Modeling Machine Learning for Fifa World Cup Predictions
-6. Qatar World Cup Predictions
+## Estrutura
 
-## **Fifa World Cup Data Analyzing**
+```text
+files/                    CSVs de entrada e previsões geradas
+src/paultheoctopus.ipynb  Pipeline principal de análise, treino e inferência
+scripts/                  Validação dos dados e execução automatizada
+tests/                    Testes dos contratos de entrada
+docs/                     Decisões, avaliações e documentação técnica
+artifacts/                Notebook executado (gerado, não versionado)
+```
 
-In this section, we understand our dataset and make some assumptions. Like a does the FIFA ranking influence the results, are the clashes in world cups important in today's results or the win set is an interesting data.
+## Requisitos
 
-### **Historical Results**
+- Python 3.10 ou superior
+- Ambiente virtual recomendado
 
-This section is an important part of building the algorithm, as we will check the previous results of the selections in matches. But we will make the following refinements to the data:
-* Check match dates.
-* Select the most played tournaments, as they are the most disputed.
-* Remove friendlies, as they can negatively influence predictions, due to their competitiveness.
-* Remove matches older than the 21st century, as soccer is very current.
+```bash
+python -m venv .venv
+```
 
-### **Ranking Fifa**
+Ativação no Windows PowerShell:
 
-In this section we will check the Fifa ranking for each team. This step will be important for determining the algorithm, as the FIFA ranking makes a calculation to rank the strongest teams.
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
 
-## **Modeling Machine Learning for Fifa World Cup Predictions**
+Ativação no Linux/macOS:
 
-In this section we will make the predictions after organizing the data previously done. For this, we will use the decision tree technique and a regression forest. These are algorithms provided by the sklearn library. <br>
-Para fazer o aprendizado iremos utilizar os dados da diferença de ranks e a média do rank. In addition, to verify the effectiveness of the algorithm, we will use the data of who won or lost the match.
+```bash
+source .venv/bin/activate
+```
+
+Instale o ambiente de execução:
+
+```bash
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+Para desenvolvimento e CI:
+
+```bash
+python -m pip install -r requirements-dev.txt
+```
+
+## Execução
+
+Validar os CSVs de entrada:
+
+```bash
+python -m scripts.validate_data
+```
+
+Executar todo o notebook e validar as previsões:
+
+```bash
+python -m scripts.run_pipeline
+```
+
+O comando gera:
+
+- `files/predictions_submission.csv`: previsões do modelo;
+- `artifacts/paultheoctopus.executed.ipynb`: notebook executado com os resultados.
+
+Para trabalhar interativamente:
+
+```bash
+jupyter lab src/paultheoctopus.ipynb
+```
+
+## Qualidade
+
+```bash
+python -m ruff check scripts tests
+python -m pytest
+```
+
+A workflow em `.github/workflows/pipeline.yml` instala o ambiente, valida os dados, executa os
+testes e roda o notebook completo em pushes e pull requests.
+
+## Dados
+
+Os CSVs ficam em `files/`. O pipeline não depende de GCP ou banco de dados. O calendário de
+2026 usa data e horário de Brasília (`GMT-3`) nas colunas `date`, `time_brasilia` e `timezone`.
+
+Consulte [docs/PIPELINE.md](docs/PIPELINE.md) para contratos, etapas e solução de problemas.
+
+## Licença
+
+MIT. Autor: Frank Laércio.
