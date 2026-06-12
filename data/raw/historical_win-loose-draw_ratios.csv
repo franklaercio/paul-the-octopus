@@ -1,4 +1,4 @@
-country1,country2,games,wins,looses,draws
+home,away,games,wins,looses,draws
 Argentina,Australia,7,0.7142857142857143,0.14285714285714285,0.14285714285714285
 Australia,Argentina,7,0.14285714285714285,0.7142857142857143,0.14285714285714285
 Argentina,Belgium,4,0.75,0.25,0.0

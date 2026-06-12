@@ -43,8 +43,8 @@ Calendário de inferência. Os números de partida devem ser únicos e sequencia
 | `date` | Data no horário de Brasília |
 | `time_brasilia` | Horário de Brasília |
 | `timezone` | Valor fixo `GMT-3` |
-| `country1` | Primeira seleção |
-| `country2` | Segunda seleção |
+| `home` | Primeira seleção |
+| `away` | Segunda seleção |
 | `phase` | Fase da competição |
 
 ## Comandos

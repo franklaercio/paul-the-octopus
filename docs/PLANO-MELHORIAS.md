@@ -407,7 +407,7 @@ P4.1.
 Capturar o histórico de **confronto direto** entre as duas seleções, incluindo decisões por pênalti.
 
 ### Passos
-1. Fazer merge de `historical_win-loose-draw_ratios.csv` pelo par `(country1, country2)` (colunas reais: `games, wins, looses, draws`), gerando taxas H2H orientadas ao mandante (`h2h_win_rate`, `h2h_draw_rate`, `h2h_n`).
+1. Fazer merge de `historical_win-loose-draw_ratios.csv` pelo par `(home, away)` (colunas reais: `games, wins, looses, draws`), gerando taxas H2H orientadas ao mandante (`h2h_win_rate`, `h2h_draw_rate`, `h2h_n`).
 2. Cuidado de vazamento: o arquivo de ratios é um **agregado total** (pode incluir jogos posteriores à partida em questão). Preferir **reconstruir o H2H incrementalmente** a partir de `historical-results.csv` com `shift(1)` por par de seleções; usar o CSV agregado apenas como verificação/sanidade, não como feature direta de treino.
 3. Incorporar `shootouts.csv` (colunas `date, home_team, away_team, winner`) como sinal de confrontos historicamente equilibrados (decididos nos pênaltis) — também truncado por data.
 4. Aplicar decaimento temporal e ajuste de mando ao H2H, se melhorar o RPS.

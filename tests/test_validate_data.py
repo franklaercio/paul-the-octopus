@@ -21,7 +21,7 @@ def test_repository_inputs_are_valid() -> None:
 def test_schedule_rejects_invalid_timezone(tmp_path: Path) -> None:
     schedule = tmp_path / "matches-schedule.csv"
     schedule.write_text(
-        "match,date,time_brasilia,timezone,country1,country2,phase\n"
+        "match,date,time_brasilia,timezone,home,away,phase\n"
         "1,11/06/2026,16:00,UTC,Mexico,South Africa,group matches\n",
         encoding="utf-8",
     )
