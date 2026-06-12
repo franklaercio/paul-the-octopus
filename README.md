@@ -1,28 +1,25 @@
 # Paul the Octopus
 
-Pipeline de ciência de dados e machine learning para prever os resultados da Copa do Mundo
-FIFA 2026. O projeto combina histórico de partidas, ranking FIFA, calibração de probabilidades
-e um modelo de gols para gerar previsões reproduzíveis das 72 partidas da fase de grupos.
+Data science and machine learning pipeline for predicting the results of the FIFA 2026 World Cup. The project combines match history, FIFA ranking, probability calibration, and a goals model to generate reproducible predictions for the 72 group-stage matches.
 
 ![Paul the Octopus](img/paul.png)
 
 > [!IMPORTANT]
-> `data/results/predictions_submission.csv` é um artefato gerado. A execução completa do pipeline
-> sobrescreve esse arquivo. Revise o diff das previsões antes de fazer commit.
+> `data/results/predictions_submission.csv` is a generated artifact. Running the full pipeline overwrites this file. Review the prediction diff before committing.
 
-## Modelo atual
+## Current model
 
-- **Resultado 1X2:** ensemble do classificador P2 com calibração isotônica e Dixon-Coles.
-- **Placar:** matriz Dixon-Coles em campo neutro, com escala de gols `1.35`.
-- **Empates competitivos:** margem flexível `DRAW_MARGIN_PROD=0.08`.
-- **Validação:** splits temporais e hold-out da Copa de 2022, preservados contra vazamento.
+- **1X2 result:** P2 classifier ensemble with isotonic calibration and Dixon-Coles.
+- **Scoreline:** neutral-field Dixon-Coles matrix, with a goal scale of `1.35`.
+- **Competitive draws:** flexible margin `DRAW_MARGIN_PROD=0.08`.
+- **Validation:** temporal splits and 2022 World Cup hold-out, preserved against leakage.
 
-As decisões experimentais e métricas estão documentadas em
+The experimental decisions and metrics are documented in
 [docs/AVALIACAO-PREVISOES-2026.md](docs/AVALIACAO-PREVISOES-2026.md).
 
-## Início rápido
+## Quick start
 
-Requer Python 3.10 ou superior.
+Requires Python 3.10 or higher.
 
 Windows PowerShell:
 
@@ -46,94 +43,88 @@ python -m pytest
 python -m scripts.run_pipeline
 ```
 
-## Estrutura
+## Structure
 
 ```text
-data/raw/                 CSVs de entrada
-data/results/             Previsões geradas
-notebooks/paultheoctopus.ipynb  Pipeline principal de análise, treino e inferência
-scripts/                  Validação dos dados e execução automatizada
-tests/                    Testes dos contratos de entrada
-docs/                     Decisões, avaliações e documentação técnica
-artifacts/                Notebook executado (gerado, não versionado)
+data/raw/                 Input CSVs
+data/results/             Generated predictions
+notebooks/paultheoctopus.ipynb  Main analysis, training, and inference pipeline
+scripts/                  Data validation and automated execution
+tests/                    Input contract tests
+docs/                     Decisions, evaluations, and technical documentation
+artifacts/                Executed notebook, generated and not versioned
 ```
 
-Para instalar apenas o ambiente de execução, sem as ferramentas de desenvolvimento:
+To install only the runtime environment, without development tools:
 
 ```bash
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-## Execução
+## Execution
 
-Validar os CSVs de entrada:
+Validate the input CSVs:
 
 ```bash
 python -m scripts.validate_data
 ```
 
-Executar todo o notebook e validar as previsões:
+Run the entire notebook and validate the predictions:
 
 ```bash
 python -m scripts.run_pipeline
 ```
 
-O comando gera:
+The command generates:
 
-| Arquivo | Descrição |
+| File | Description |
 |---|---|
-| `data/results/predictions_submission.csv` | Saída direta do modelo, com seleções e placar previsto |
-| `artifacts/paultheoctopus.executed.ipynb` | Notebook executado, métricas e diagnósticos da execução |
+| `data/results/predictions_submission.csv` | Direct model output, with selections and predicted scoreline |
+| `artifacts/paultheoctopus.executed.ipynb` | Executed notebook, metrics, and execution diagnostics |
 
-O arquivo `data/results/schedule_with_predictions.csv` mantém o calendário enriquecido com
-placar e resultado previsto para consumo humano. Ele deve permanecer coerente com a submissão
-quando ambos representarem a mesma execução do modelo.
+The file `data/results/schedule_with_predictions.csv` keeps the schedule enriched with the predicted scoreline and result for human consumption. It must remain consistent with the submission when both represent the same model run.
 
-Para trabalhar interativamente:
+To work interactively:
 
 ```bash
 jupyter lab notebooks/paultheoctopus.ipynb
 ```
 
-## Qualidade
+## Quality
 
 ```bash
 python -m ruff check scripts tests
 python -m pytest
 ```
 
-A workflow em `.github/workflows/pipeline.yml` instala o ambiente, valida os dados, executa os
-testes e roda o notebook completo em pushes e pull requests.
+The workflow in `.github/workflows/pipeline.yml` installs the environment, validates the data, runs the tests, and executes the full notebook on pushes and pull requests.
 
-## Dados
+## Data
 
-As entradas ficam em `data/raw/` e os resultados em `data/results/`. O pipeline usa CSVs locais e
-não depende de GCP ou banco de dados.
+Inputs are stored in `data/raw/` and results in `data/results/`. The pipeline uses local CSVs and does not depend on GCP or a database.
 
-| Entrada | Finalidade |
+| Input | Purpose |
 |---|---|
-| `historical-results.csv` | Histórico de partidas usado no treino e nas features temporais |
-| `ranking.csv` | Histórico do ranking FIFA disponível antes de cada partida |
-| `matches-schedule.csv` | Calendário das 72 partidas previstas para 2026 |
+| `historical-results.csv` | Match history used for training and temporal features |
+| `ranking.csv` | FIFA ranking history available before each match |
+| `matches-schedule.csv` | Schedule of the 72 matches planned for 2026 |
 
-O calendário usa data e horário de Brasília: `date` em `DD/MM/AAAA`, `time_brasilia` em `HH:MM`
-e `timezone=GMT-3`.
+The schedule uses Brasília date and time: `date` in `DD/MM/YYYY`, `time_brasilia` in `HH:MM`, and `timezone=GMT-3`.
 
-## Reprodutibilidade
+## Reproducibility
 
-Alterações científicas devem ser feitas em `notebooks/paultheoctopus.ipynb`. Os scripts apenas
-orquestram a execução e validam os contratos; eles não duplicam a lógica do modelo.
+Scientific changes should be made in `notebooks/paultheoctopus.ipynb`. The scripts only orchestrate execution and validate contracts; they do not duplicate the model logic.
 
-Antes de aceitar novas previsões:
+Before accepting new predictions:
 
-1. Execute `python -m scripts.validate_data`.
-2. Execute `python -m pytest`.
-3. Execute `python -m scripts.run_pipeline`.
-4. Revise as métricas do notebook executado e o diff de `data/results/`.
+1. Run `python -m scripts.validate_data`.
+2. Run `python -m pytest`.
+3. Run `python -m scripts.run_pipeline`.
+4. Review the executed notebook metrics and the diff in `data/results/`.
 
-Consulte [docs/PIPELINE.md](docs/PIPELINE.md) para contratos, etapas e solução de problemas.
+See [docs/PIPELINE.md](docs/PIPELINE.md) for contracts, steps, and troubleshooting.
 
-## Licença
+## License
 
-MIT. Autor: Frank Laércio.
+MIT. Author: Frank Laércio.
