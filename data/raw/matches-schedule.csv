@@ -1,0 +1,73 @@
+match,date,time_brasilia,timezone,home,away,phase
+1,11/06/2026,16:00,GMT-3,Mexico,South Africa,group matches
+2,11/06/2026,23:00,GMT-3,South Korea,Czech Republic,group matches
+3,12/06/2026,16:00,GMT-3,Canada,Bosnia and Herzegovina,group matches
+4,12/06/2026,22:00,GMT-3,USA,Paraguay,group matches
+5,13/06/2026,16:00,GMT-3,Qatar,Switzerland,group matches
+6,13/06/2026,19:00,GMT-3,Brazil,Morocco,group matches
+7,13/06/2026,22:00,GMT-3,Haiti,Scotland,group matches
+8,14/06/2026,01:00,GMT-3,Australia,Turkey,group matches
+9,14/06/2026,14:00,GMT-3,Germany,Curaçao,group matches
+10,14/06/2026,20:00,GMT-3,Côte d'Ivoire,Ecuador,group matches
+11,14/06/2026,17:00,GMT-3,Netherlands,Japan,group matches
+12,14/06/2026,23:00,GMT-3,Sweden,Tunisia,group matches
+13,15/06/2026,16:00,GMT-3,Belgium,Egypt,group matches
+14,15/06/2026,22:00,GMT-3,Iran,New Zealand,group matches
+15,15/06/2026,13:00,GMT-3,Spain,Cabo Verde,group matches
+16,15/06/2026,19:00,GMT-3,Saudi Arabia,Uruguay,group matches
+17,16/06/2026,16:00,GMT-3,France,Senegal,group matches
+18,16/06/2026,19:00,GMT-3,Iraq,Norway,group matches
+19,16/06/2026,22:00,GMT-3,Argentina,Algeria,group matches
+20,17/06/2026,01:00,GMT-3,Austria,Jordan,group matches
+21,17/06/2026,14:00,GMT-3,Portugal,Congo DR,group matches
+22,17/06/2026,23:00,GMT-3,Uzbekistan,Colombia,group matches
+23,17/06/2026,17:00,GMT-3,England,Croatia,group matches
+24,17/06/2026,20:00,GMT-3,Ghana,Panama,group matches
+25,18/06/2026,13:00,GMT-3,Czech Republic,South Africa,group matches
+26,18/06/2026,22:00,GMT-3,Mexico,South Korea,group matches
+27,18/06/2026,16:00,GMT-3,Switzerland,Bosnia and Herzegovina,group matches
+28,18/06/2026,19:00,GMT-3,Canada,Qatar,group matches
+29,19/06/2026,19:00,GMT-3,Scotland,Morocco,group matches
+30,19/06/2026,21:30,GMT-3,Brazil,Haiti,group matches
+31,19/06/2026,16:00,GMT-3,USA,Australia,group matches
+32,20/06/2026,00:00,GMT-3,Turkey,Paraguay,group matches
+33,20/06/2026,17:00,GMT-3,Germany,Côte d'Ivoire,group matches
+34,20/06/2026,21:00,GMT-3,Ecuador,Curaçao,group matches
+35,20/06/2026,14:00,GMT-3,Netherlands,Sweden,group matches
+36,21/06/2026,01:00,GMT-3,Tunisia,Japan,group matches
+37,21/06/2026,16:00,GMT-3,Belgium,Iran,group matches
+38,21/06/2026,22:00,GMT-3,New Zealand,Egypt,group matches
+39,21/06/2026,13:00,GMT-3,Spain,Saudi Arabia,group matches
+40,21/06/2026,19:00,GMT-3,Uruguay,Cabo Verde,group matches
+41,22/06/2026,18:00,GMT-3,France,Iraq,group matches
+42,22/06/2026,21:00,GMT-3,Norway,Senegal,group matches
+43,22/06/2026,14:00,GMT-3,Argentina,Austria,group matches
+44,23/06/2026,00:00,GMT-3,Jordan,Algeria,group matches
+45,23/06/2026,14:00,GMT-3,Portugal,Uzbekistan,group matches
+46,23/06/2026,23:00,GMT-3,Colombia,Congo DR,group matches
+47,23/06/2026,17:00,GMT-3,England,Ghana,group matches
+48,23/06/2026,20:00,GMT-3,Panama,Croatia,group matches
+49,24/06/2026,22:00,GMT-3,Mexico,Czech Republic,group matches
+50,24/06/2026,22:00,GMT-3,South Africa,South Korea,group matches
+51,24/06/2026,16:00,GMT-3,Canada,Switzerland,group matches
+52,24/06/2026,16:00,GMT-3,Bosnia and Herzegovina,Qatar,group matches
+53,24/06/2026,19:00,GMT-3,Scotland,Brazil,group matches
+54,24/06/2026,19:00,GMT-3,Morocco,Haiti,group matches
+55,25/06/2026,23:00,GMT-3,USA,Turkey,group matches
+56,25/06/2026,23:00,GMT-3,Paraguay,Australia,group matches
+57,25/06/2026,17:00,GMT-3,Curaçao,Côte d'Ivoire,group matches
+58,25/06/2026,17:00,GMT-3,Ecuador,Germany,group matches
+59,25/06/2026,20:00,GMT-3,Japan,Sweden,group matches
+60,25/06/2026,20:00,GMT-3,Tunisia,Netherlands,group matches
+61,27/06/2026,00:00,GMT-3,Egypt,Iran,group matches
+62,27/06/2026,00:00,GMT-3,New Zealand,Belgium,group matches
+63,26/06/2026,21:00,GMT-3,Cabo Verde,Saudi Arabia,group matches
+64,26/06/2026,21:00,GMT-3,Uruguay,Spain,group matches
+65,26/06/2026,16:00,GMT-3,Norway,France,group matches
+66,26/06/2026,16:00,GMT-3,Senegal,Iraq,group matches
+67,27/06/2026,23:00,GMT-3,Algeria,Austria,group matches
+68,27/06/2026,23:00,GMT-3,Jordan,Argentina,group matches
+69,27/06/2026,20:30,GMT-3,Colombia,Portugal,group matches
+70,27/06/2026,20:30,GMT-3,Congo DR,Uzbekistan,group matches
+71,27/06/2026,18:00,GMT-3,Panama,England,group matches
+72,27/06/2026,18:00,GMT-3,Croatia,Ghana,group matches

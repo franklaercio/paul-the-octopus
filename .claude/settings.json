@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash",
+      "PowerShell",
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(py:*)",
+      "PowerShell(python:*)",
+      "PowerShell(python3:*)",
+      "PowerShell(py:*)",
+      "NotebookEdit(src/paultheoctopus.ipynb)",
+      "Edit(src/paultheoctopus.ipynb)",
+      "Write(src/paultheoctopus.ipynb)"
+    ],
+    "ask": [
+      "Bash(rm:*)",
+      "Bash(rm *)",
+      "Bash(rmdir:*)",
+      "Bash(rmdir *)",
+      "Bash(git rm:*)",
+      "Bash(git rm *)",
+      "Bash(git clean:*)",
+      "Bash(git clean *)",
+      "Bash(git push)",
+      "Bash(git push:*)",
+      "Bash(git push *)",
+      "PowerShell(Remove-Item:*)",
+      "PowerShell(Remove-Item *)",
+      "PowerShell(rm:*)",
+      "PowerShell(rm *)",
+      "PowerShell(del:*)",
+      "PowerShell(del *)",
+      "PowerShell(erase:*)",
+      "PowerShell(rd:*)",
+      "PowerShell(rd *)",
+      "PowerShell(rmdir:*)",
+      "PowerShell(rmdir *)",
+      "PowerShell(ri:*)",
+      "PowerShell(git rm:*)",
+      "PowerShell(git rm *)",
+      "PowerShell(git clean:*)",
+      "PowerShell(git clean *)",
+      "PowerShell(git push)",
+      "PowerShell(git push:*)",
+      "PowerShell(git push *)"
+    ]
+  }
+}
