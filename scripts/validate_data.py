@@ -85,7 +85,7 @@ def validate_schedule(path: Path) -> int:
             raise ValidationError(
                 f"matches-schedule.csv:{line_number}: timezone deve ser GMT-3"
             )
-        if not row["country1"].strip() or not row["away"].strip():
+        if not row["home"].strip() or not row["away"].strip():
             raise ValidationError(
                 f"matches-schedule.csv:{line_number}: selecao nao informada"
             )
