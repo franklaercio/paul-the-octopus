@@ -1,7 +1,15 @@
+"""Orquestra os notebooks do pipeline em ordem e valida as entradas.
+
+Ordem executável: 01_features -> 02_train -> 03_predict (00_eda fica de fora).
+
+A lógica científica vive nos notebooks; este script valida os contratos dos CSVs
+de entrada, executa os notebooks em ordem e salva os notebooks executados em
+artifacts/. Conforme cada etapa for implementada, acrescente aqui a validação
+dos artefatos de saída (features, modelo, submission).
+"""
 from __future__ import annotations
 
 import argparse
-import csv
 from pathlib import Path
 
 import nbformat
@@ -9,35 +17,19 @@ from nbclient import NotebookClient
 
 from scripts.validate_data import ROOT, ValidationError, validate_repository
 
-NOTEBOOK = ROOT / "notebooks" / "paultheoctopus.ipynb"
+NOTEBOOKS_DIR = ROOT / "notebooks"
 ARTIFACTS_DIR = ROOT / "artifacts"
-PREDICTIONS = ROOT / "data" / "results" / "predictions_submission.csv"
+
+# Notebooks que compõem o pipeline executável, na ordem. 00_eda fica de fora.
+PIPELINE_NOTEBOOKS = (
+    "01_features.ipynb",
+    "02_train.ipynb",
+    "03_predict.ipynb",
+)
 
 
-def validate_predictions(path: Path, expected_rows: int) -> None:
-    if not path.is_file():
-        raise ValidationError(f"O pipeline nao gerou {path}")
-
-    with path.open(encoding="utf-8-sig", newline="") as handle:
-        reader = csv.DictReader(handle)
-        required = {"home", "home_score", "away_score", "away"}
-        missing = required - set(reader.fieldnames or [])
-        if missing:
-            raise ValidationError(
-                f"predictions_submission.csv: colunas ausentes: {', '.join(sorted(missing))}"
-            )
-        rows = list(reader)
-
-    if len(rows) != expected_rows:
-        raise ValidationError(
-            "predictions_submission.csv: quantidade de jogos diferente do calendario "
-            f"({len(rows)} != {expected_rows})"
-        )
-
-
-def run_pipeline(output: Path, timeout: int) -> None:
-    counts = validate_repository()
-    notebook = nbformat.read(NOTEBOOK, as_version=4)
+def execute_notebook(path: Path, output_dir: Path, timeout: int) -> Path:
+    notebook = nbformat.read(path, as_version=4)
     client = NotebookClient(
         notebook,
         timeout=timeout,
@@ -46,30 +38,42 @@ def run_pipeline(output: Path, timeout: int) -> None:
         resources={"metadata": {"path": str(ROOT)}},
     )
     client.execute(cwd=str(ROOT))
+    output_dir.mkdir(parents=True, exist_ok=True)
+    executed = output_dir / f"{path.stem}.executed.ipynb"
+    nbformat.write(notebook, executed)
+    return executed
 
-    output.parent.mkdir(parents=True, exist_ok=True)
-    nbformat.write(notebook, output)
-    validate_predictions(PREDICTIONS, counts["matches-schedule.csv"])
+
+def run_pipeline(output_dir: Path, timeout: int) -> None:
+    validate_repository()
+    for name in PIPELINE_NOTEBOOKS:
+        path = NOTEBOOKS_DIR / name
+        if not path.is_file():
+            raise ValidationError(f"Notebook ausente: {path}")
+        executed = execute_notebook(path, output_dir, timeout)
+        print(f"OK: {name} executado -> {executed.name}")
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Executa o notebook completo e valida a saida.")
+    parser = argparse.ArgumentParser(
+        description="Executa os notebooks do pipeline em ordem e valida as entradas."
+    )
     parser.add_argument(
-        "--output",
+        "--output-dir",
         type=Path,
-        default=ARTIFACTS_DIR / "paultheoctopus.executed.ipynb",
+        default=ARTIFACTS_DIR,
+        help="Pasta onde gravar os notebooks executados.",
     )
     parser.add_argument("--timeout", type=int, default=900, help="Timeout por celula, em segundos.")
     args = parser.parse_args()
 
     try:
-        run_pipeline(args.output.resolve(), args.timeout)
+        run_pipeline(args.output_dir.resolve(), args.timeout)
     except (ValidationError, Exception) as exc:
         print(f"ERRO: {exc}")
         return 1
 
-    print(f"OK: notebook executado em {args.output.resolve()}")
-    print(f"OK: previsoes validadas em {PREDICTIONS}")
+    print("OK: pipeline executado")
     return 0
 
 
