@@ -1,0 +1,6 @@
+modelo,rps,rps_1993,brier,log_loss,acc
+taxa_base,0.22562,0.22691,,,
+sempre_mandante,,,,,0.48493
+maior_ranking,,,,,0.5532
+logreg,0.17539,0.17252,0.52578,0.89238,0.58747
+histgb,0.18132,0.17861,0.54386,0.92801,0.57287

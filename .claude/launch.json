@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "JupyterLab",
+      "runtimeExecutable": "jupyter",
+      "runtimeArgs": ["lab", "--no-browser", "--ip", "127.0.0.1", "--port", "8888", "--IdentityProvider.token="],
+      "port": 8888
+    }
+  ]
+}

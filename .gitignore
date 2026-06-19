@@ -130,3 +130,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Artefatos intermediários do pipeline (mantém as pastas, ignora o conteúdo)
+data/processed/*
+!data/processed/.gitkeep
+models/*
+!models/.gitkeep
+
+# macOS
+.DS_Store
